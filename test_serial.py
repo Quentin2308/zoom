@@ -8,7 +8,7 @@ try:
   bytes_sent = serialPort.write(test_string)
   print ("Envoyé ", bytes_sent, " octets")
   loopback = serialPort.read(bytes_sent)
-  if loopback == test_string      
+  if loopback == test_string:
     print ("Reçu ", len(loopback), "octets identiques. Le port", port, "fonctionne bien ! \n")
   else:
     print ("Reçu des données incorrectes : ", loopback, " sur le port série ", port, " bouclé \n")
