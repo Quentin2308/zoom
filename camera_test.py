@@ -8,7 +8,7 @@ serialPort = Serial(port, 9600)
 print ("Port Série ", port, " ouvert pour le test :")
 #bytes_sent = serialPort.write(byte)
 
-loopback = serialPort.read(bytes_sent, timeout = 0.5)
+loopback = serialPort.read(128, timeout = 0.5)
 
 print (loopback.decode('utf-8'))
 
