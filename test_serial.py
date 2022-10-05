@@ -1,17 +1,12 @@
-# Test du port série
 from periphery import Serial
-test_string = b"Je teste le port série 1 2 3 4 5"
-port = "/dev/ttyS0"
-try:
-  serialPort = Serial(port, 9600)
-  print ("Port Série ", port, " ouvert pour le test :")
-  bytes_sent = serialPort.write(test_string)
-  print ("Envoyé ", bytes_sent, " octets")
-  loopback = serialPort.read(128,0.5)
-  if loopback == test_string:
-    print ("Reçu ", len(loopback), "octets identiques. Le port", port, "fonctionne bien ! \n")
-  else:
-    print ("Reçu des données incorrectes : ", loopback, " sur le port série ", port, " bouclé \n")
-  serialPort.close()
-except IOError:
-  print ("Erreur sur ", port, "\n")
+
+# Open /dev/ttyUSB0 with baudrate 115200, and defaults of 8N1, no flow control
+serial = Serial("/dev/ttyS0", 9600)
+
+serial.write(b"Hello World!")
+
+# Read up to 128 bytes with 500ms timeout
+buf = serial.read(128, 0.5)
+print("read {:d} bytes: _{:s}_".format(len(buf), buf))
+
+serial.close()
