@@ -6,7 +6,7 @@ serial = Serial("/dev/ttyS0", 9600)
 serial.write(b"Hello World!")
 
 # Read up to 128 bytes with 500ms timeout
-buf = serial.read(100, 2)
+buf = serial.read(128, 1)
 print("read {:d} bytes: {:s}".format(len(buf), buf.decode('utf-8')))
 
 serial.close()
