@@ -3,7 +3,7 @@ from periphery import Serial
 test_string = "Je teste le port série 1 2 3 4 5".encode('utf-8')
 port = "/dev/ttyS0"
 try:
-  serialPort = serial.Serial(port, 9600, timeout = 2)
+  serialPort = Serial(port, 9600, timeout = 2)
   print ("Port Série ", port, " ouvert pour le test :")
   bytes_sent = serialPort.write(test_string)
   print ("Envoyé ", bytes_sent, " octets")
