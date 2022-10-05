@@ -1,5 +1,5 @@
 # Test du port série
-from periphery import Serail
+from periphery import Serial
 test_string = b"Je teste le port série 1 2 3 4 5"
 port =  "/dev/ttyS0"
 try:
