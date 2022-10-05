@@ -8,7 +8,8 @@ serialPort = Serial(port, 9600)
 print ("Port Série ", port, " ouvert pour le test :")
 bytes_sent = serialPort.write(byte)
 print ("Envoyé ", bytes_sent, " octets")
-loopback = serialPort.read(bytes_sent, None)
+loopback = serialPort.read(bytes_sent)
+print (loopback.decode('utf-8'))
 if loopback == byte:
   print ("Reçu ", len(loopback), "octets identiques. Le port", port, "fonctionne bien ! \n")
 else:
