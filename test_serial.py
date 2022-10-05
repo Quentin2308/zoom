@@ -4,9 +4,9 @@ test_string = b"Je teste le port série 1 2 3 4 5"
 port =  "/dev/ttyS0"
 try:
   serialPort = serial.Serial(port, 9600, timeout = 2)
-  print "Port Série ", port, " ouvert pour le test :"
+  print ("Port Série ", port, " ouvert pour le test :")
   bytes_sent = serialPort.write(test_string)
-  print "Envoyé ", bytes_sent, " octets"
+  print ("Envoyé ", bytes_sent, " octets")
   loopback = serialPort.read(bytes_sent)
   if loopback == test_string      
     print ("Reçu ", len(loopback), "octets identiques. Le port", port, "fonctionne bien ! \n")
