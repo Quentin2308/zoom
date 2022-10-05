@@ -7,8 +7,9 @@ port = "/dev/ttyS0"
 serialPort = Serial(port, 9600)
 print ("Port Série ", port, " ouvert pour le test :")
 bytes_sent = serialPort.write(byte)
+print (byte_sent)
 print ("Envoyé ", bytes_sent, " octets")
-loopback = serialPort.read(bytes_sent)
+loopback = serialPort.read(bytes_sent, timeout = 0.5)
 print (loopback.decode('utf-8'))
 if loopback == byte:
   print ("Reçu ", len(loopback), "octets identiques. Le port", port, "fonctionne bien ! \n")
