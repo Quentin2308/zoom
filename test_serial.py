@@ -7,6 +7,6 @@ serial.write(b"Hello World!")
 
 # Read up to 128 bytes with 500ms timeout
 buf = serial.read(128, 0.5)
-print("read {:d} bytes: {:s}".format(len(buf), buf.encode('utf-8')))
+print("read {:d} bytes: {:s}".format(len(buf), buf.decode('utf-8')))
 
 serial.close()
