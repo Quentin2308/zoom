@@ -200,13 +200,11 @@ def discoverCameras():
 		s.close()
 
 c = discoverCameras()
-# d = Camera("CAM1", "10.0.1.90", "")
+d = Camera("CAM1", "10.0.1.90", "")
 import time
-# while True:
-# 	d.sendCommand(b"\x81\x01\x06\x01\x18\x14\x02\x02\xFF") # move down
-# 	time.sleep(1)
-# 	d.sendCommand(b"\x81\x01\x06\x01\x18\x14\x01\x01\xFF") # move up
-# 	time.sleep(1)
+
+d.sendCommand(b"\x01\x00\x00\x06\x00\x00\x00\x01\x81\x01\x04\x00\x03\xff") 
+time.sleep(1)
 
 #d.sendCommand(b"\x81\x01\x7e\x01\x18\x02\xff")
 #c[0].setIP(name="LaurieC1")
