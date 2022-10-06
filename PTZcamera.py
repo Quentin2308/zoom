@@ -197,7 +197,7 @@ def discoverCameras():
 	finally:
 		s.close()
 
-# c = discoverCameras()
+c = discoverCameras()
 # d = Camera("CAM1", "10.0.1.90", "")
 import time
 # while True:
