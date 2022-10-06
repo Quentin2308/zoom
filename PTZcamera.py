@@ -1,6 +1,8 @@
 import socket
 import logging as log
 from commands import *
+from periphery import Serial
+
 log.basicConfig(format='%(asctime)s %(message)s')
 log.addLevelName(5,"VERBOSE")
 log.getLogger().setLevel("VERBOSE")
@@ -171,9 +173,9 @@ def discoverCameras():
 	s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 	s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 	s.settimeout(1)
-
+	port = Serial("/dev/ttyS1",9600)
 	try:
-		s.bind(("", 52380))
+		s.bind(("", port))
 
 		discoverCmd = b"\x02ENQ:network\xFF\x33"
 		log.debug("Sending discover...")
