@@ -17,7 +17,7 @@ command = b"\x01\x00" + length + sequenceNumber.to_bytes(4, 'big') + command
 print(command)
 serialPort.write(command)
 #data = sendRawCommand(self.ip, command, skipCompletion=skipCompletion) # TODO: deal with udp packets getting lost and sequence number desyncing (see manual)
-self.sequenceNumber += 1
+sequenceNumber += 1
 
 
 
