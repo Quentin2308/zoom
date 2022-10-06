@@ -28,7 +28,7 @@ sequenceNumber += 1
 #serialPort.write(PowerOn)
                             
 loopback = serialPort.read(128, timeout = 0.5)
-
+print (loopback)
 print (loopback.decode('utf-8'))
 
 serialPort.close()
