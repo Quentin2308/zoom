@@ -173,9 +173,9 @@ def discoverCameras():
 	s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 	s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 	s.settimeout(1)
-	port = Serial("/dev/ttyS1",9600)
+	#port = Serial("/dev/ttyS1",9600)
 	try:
-		s.bind(("", port))
+		s.bind(("", 52381))
 
 		discoverCmd = b"\x02ENQ:network\xFF\x33"
 		log.debug("Sending discover...")
