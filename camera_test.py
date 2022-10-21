@@ -21,7 +21,7 @@ print ("Port Série ", port, " ouvert pour le test :")
 bytes_sent = serialPort.write(inquiry)
 print("nombre de byte écrit sur le port : ", bytes_sent)
 
-if serialPort.poll():
+if serialPort.poll(2):
   answer = serialPort.read(10)
   print("réponse de la camera :", answer)
   
