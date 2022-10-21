@@ -177,13 +177,13 @@ def discoverCameras():
 		s.close()
 
 c = discoverCameras()
-#d = Camera("CAM1", "255.255.255.255", "")
-#print("camera1: ", d)
+
 e = Camera("CAM1", "127.0.0.1", "")
 print("camera 2 :", e)
+
 f = Camera("CAM1", "10.0.1.90", "")
 print("ccamera3 : ", f)
-d.getZoomPos()
+
 e.getZoomPos()
 f.getZoomPos()
 
