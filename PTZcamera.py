@@ -184,10 +184,11 @@ print("camera 2 :", e)
 d = Camera("CAM2", "192.168.1.1", "")
 print("camera3 : ", d)
 
-f = Camera("CAM2", "10.0.1.90", "")
+f = Camera("CAM3", "10.0.1.90", "")
 print("camera3 : ", f)
 
-e.getZoomPos()
+#e.getZoomPos()
+d.getZoomPos()
 f.getZoomPos()
 
 #d.sendCommand(b"\x01\x00\x00\x06\x00\x00\x00\x01\x81\x01\x04\x00\x03\xff") 
