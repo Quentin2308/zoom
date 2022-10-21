@@ -4,22 +4,22 @@ from time import sleep
 
 port = "/dev/ttyS1"
 
-power_inquiry = bytes([81,9,4,0,255])
+inquiry = bytearray.fromhex("883001FF")
 
 serialPort = Serial(port, 9600, databits=8, stopbits=1)
 print ("Port Série ", port, " ouvert pour le test :")
 sequenceNumber = 1
 
-print(power_inquiry)
+print(inquiry)
 
-bytes_sent = serialPort.write(power_inquiry)
+bytes_sent = serialPort.write(inquiry)
 # for general commands (payload type 0100), command should be bytes
 #command = bytearray.fromhex("8101040003ff")
 
-length = len(power_inquiry).to_bytes(2, 'big')
+length = len(inquiry).to_bytes(2, 'big')
 print ("longueur = ", length)
 
-command = b"\x01\x00" + length + sequenceNumber.to_bytes(4, 'big') + power_inquiry
+command = b"\x01\x00" + length + sequenceNumber.to_bytes(4, 'big') + inquiry
 print(command)
 
 serialPort.write(command)
