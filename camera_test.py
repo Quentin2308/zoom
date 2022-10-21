@@ -25,6 +25,9 @@ if serialPort.poll(2):
   answer = serialPort.read(10)
   print("réponse de la camera :", answer)
   
+else : 
+  print("aucun message retour de la camera")
+  
   
 # for general commands (payload type 0100), command should be bytes
 #command = bytearray.fromhex("8101040003ff")
@@ -47,6 +50,6 @@ if serialPort.poll(2):
                             
 #loopback = serialPort.read(128, timeout = 0.5)
 #print (loopback)
-p#rint (loopback.decode('utf-8'))
+#print (loopback.decode('utf-8'))
 
 serialPort.close()
