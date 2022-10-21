@@ -181,7 +181,7 @@ c = discoverCameras()
 e = Camera("CAM1", "127.0.0.1", "")
 print("camera 2 :", e)
 
-d = Camera("CAM2", "29.09.19.99", "")
+d = Camera("CAM2", "192.168.1.1", "")
 print("camera3 : ", d)
 
 f = Camera("CAM2", "10.0.1.90", "")
