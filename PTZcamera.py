@@ -179,18 +179,18 @@ def discoverCameras():
 
 c = discoverCameras()
 
-e = Camera("CAM1", "/dev/ttyS1", "")
+e = Camera("CAM1", "192.168.0.1", "")
 print("camera 2 :", e)
 
-d = Camera("CAM2", "192.168.101.2", "")
+d = Camera("CAM2", "192.168.0.13", "")
 print("camera3 : ", d)
 
-f = Camera("CAM3", "192.168.1.29", "")
+f = Camera("CAM3", "192.168.108.42", "")
 print("camera3 : ", f)
 
 e.getZoomPos()
-#d.getZoomPos()
-#f.getZoomPos()
+d.getZoomPos()
+f.getZoomPos()
 
 #d.sendCommand(b"\x01\x00\x00\x06\x00\x00\x00\x01\x81\x01\x04\x00\x03\xff") 
 #time.sleep(1)
