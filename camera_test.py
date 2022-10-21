@@ -4,7 +4,7 @@ from time import sleep
 
 port = "/dev/ttyS1"
 
-power_inquiry = bytearray.fromhex("81090400ff")
+power_inquiry = bytearray([81,09,04,00,ff])
 
 serialPort = Serial(port, 9600, databits=8, stopbits=1)
 print ("Port Série ", port, " ouvert pour le test :")
