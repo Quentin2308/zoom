@@ -5,7 +5,9 @@ from time import sleep
 
 port = "/dev/ttyS1"
 
-inquiry = bytearray.fromhex("883001FF")
+IF_clear = bytearray.fromhex("88 01 00 01 FF")
+inquiry = bytearray.fromhex("88 30 01 FF")
+
 print (inquiry)
 int_inq = int.from_bytes(inquiry, byteorder="big") #entier correspondant
 print (int_inq)
@@ -18,8 +20,12 @@ print (byte_inq)
 serialPort = Serial(port, 9600, databits=8, stopbits=1)
 print ("Port Série ", port, " ouvert pour le test :")
 
-bytes_sent = serialPort.write(inquiry)
-print("nombre de byte écrit sur le port : ", bytes_sent)
+serialPort.write(IF_clear)
+time.sleep(0.1)
+serialPort.write(inquiry)
+
+print("fin d'écriture")
+#print("nombre de byte écrit sur le port : ", bytes_sent)
 
 if serialPort.poll(2):
   answer = serialPort.read(10)
