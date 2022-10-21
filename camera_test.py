@@ -21,8 +21,11 @@ print ("Port Série ", port, " ouvert pour le test :")
 bytes_sent = serialPort.write(inquiry)
 print("nombre de byte écrit sur le port : ", bytes_sent)
 
-#if serialPort.poll(0.1):
-  #answer = serialPort.read(
+if serialPort.poll():
+  answer = serialPort.read(10)
+  print("réponse de la camera :", answer)
+  
+  
 # for general commands (payload type 0100), command should be bytes
 #command = bytearray.fromhex("8101040003ff")
 
@@ -42,8 +45,8 @@ print("nombre de byte écrit sur le port : ", bytes_sent)
 #sleep(2)
 #serialPort.write(PowerOn)
                             
-loopback = serialPort.read(128, timeout = 0.5)
-print (loopback)
-print (loopback.decode('utf-8'))
+#loopback = serialPort.read(128, timeout = 0.5)
+#print (loopback)
+p#rint (loopback.decode('utf-8'))
 
 serialPort.close()
