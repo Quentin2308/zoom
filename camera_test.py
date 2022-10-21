@@ -17,9 +17,12 @@ print (byte_inq)
 
 serialPort = Serial(port, 9600, databits=8, stopbits=1)
 print ("Port Série ", port, " ouvert pour le test :")
-#sequenceNumber = 1
 
-#bytes_sent = serialPort.write(inquiry)
+bytes_sent = serialPort.write(byte_inq)
+print("nombre de byte écrit sur le port : ", bytes_sent)
+
+#if serialPort.poll(0.1):
+  #answer = serialPort.read(
 # for general commands (payload type 0100), command should be bytes
 #command = bytearray.fromhex("8101040003ff")
 
