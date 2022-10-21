@@ -6,20 +6,19 @@ port = "/dev/ttyS1"
 
 inquiry = bytearray.fromhex("883001FF")
 print (inquiry)
-toto4 = int.from_bytes(inquiry, byteorder="big") #entier correspondant
-print (toto4)
-toto5 = bin(toto4)[2::] #bit correspondant sans le 0b du début
-print (toto5)
-print (len(toto5))
-toto6 = bytearray.bitarray(toto5)
+int_inq = int.from_bytes(inquiry, byteorder="big") #entier correspondant
+print (int_inq)
+bit_inq = bin(int_inq)[2::] #bit correspondant sans le 0b du début
+print (bit_inq)
+print (len(bit_inq))
+byte_inq = bytearray.bitarray(bit_inq)
+print (byte_inq)
 
 serialPort = Serial(port, 9600, databits=8, stopbits=1)
 print ("Port Série ", port, " ouvert pour le test :")
 #sequenceNumber = 1
 
-print(inquiry)
-
-bytes_sent = serialPort.write(inquiry)
+#bytes_sent = serialPort.write(inquiry)
 # for general commands (payload type 0100), command should be bytes
 #command = bytearray.fromhex("8101040003ff")
 
@@ -29,7 +28,7 @@ bytes_sent = serialPort.write(inquiry)
 #command = b"\x01\x00" + length + sequenceNumber.to_bytes(4, 'big') + inquiry
 #print(command)
 
-serialPort.write(command)
+#serialPort.write(command)
 #sequenceNumber += 1
 
 #data = sendRawCommand(self.ip, command, skipCompletion=skipCompletion) # TODO: deal with udp packets getting lost and sequence number desyncing (see manual)
