@@ -1,5 +1,6 @@
 #test for the camera connection
 from periphery import Serial
+import bitarray as ba
 from time import sleep
 
 port = "/dev/ttyS1"
@@ -11,7 +12,7 @@ print (int_inq)
 bit_inq = bin(int_inq)[2::] #bit correspondant sans le 0b du début
 print (bit_inq)
 print (len(bit_inq))
-byte_inq = bytearray.bitarray(bit_inq)
+byte_inq = ba.bitarray(bit_inq)
 print (byte_inq)
 
 serialPort = Serial(port, 9600, databits=8, stopbits=1)
