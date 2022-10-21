@@ -18,7 +18,7 @@ print (byte_inq)
 serialPort = Serial(port, 9600, databits=8, stopbits=1)
 print ("Port Série ", port, " ouvert pour le test :")
 
-bytes_sent = serialPort.write(byte_inq)
+bytes_sent = serialPort.write(inquiry)
 print("nombre de byte écrit sur le port : ", bytes_sent)
 
 #if serialPort.poll(0.1):
