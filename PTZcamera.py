@@ -156,7 +156,7 @@ def discoverCameras():
 
 		discoverCmd = b"\x02ENQ:network\xFF\x33"
 		log.debug("Sending discover...")
-		s.sendto(discoverCmd, ('<broadcast>', 52380))
+		s.sendto(discoverCmd, ('<broadcast>', 52381))
 		cameras = []
 		try:
 			while True:
