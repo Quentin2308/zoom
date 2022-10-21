@@ -10,7 +10,7 @@ serialPort = Serial(port, 9600, databits=8, stopbits=1)
 print ("Port Série ", port, " ouvert pour le test :")
 sequenceNumber = 1
 
-print(cpower_inquiry)
+print(power_inquiry)
 
 bytes_sent = serialPort.write(power_inquiry)
 # for general commands (payload type 0100), command should be bytes
