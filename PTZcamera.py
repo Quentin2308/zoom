@@ -9,7 +9,7 @@ log.basicConfig(format='%(asctime)s %(message)s')
 log.addLevelName(5,"VERBOSE")
 log.getLogger().setLevel("VERBOSE")
 
-socket.setdefaulttimeout(1)
+socket.setdefaulttimeout(3)
 
 class Camera:
 	
