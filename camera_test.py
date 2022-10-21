@@ -5,14 +5,13 @@ from time import sleep
 port = "/dev/ttyS1"
 
 inquiry = bytearray.fromhex("883001FF")
-toto3 = inquiry[0:23]
-print (toto3)
-toto4 = int.from_bytes(toto3, byteorder="big") 
-#print (toto4)
-toto5 = bin(toto4)[2::]
-#print (toto5)
-#print (len(toto5))
-toto6 = ba.bitarray(toto5)
+print (inquiry)
+toto4 = int.from_bytes(inquiry, byteorder="big") #entier correspondant
+print (toto4)
+toto5 = bin(toto4)[2::] #bit correspondant sans le 0b du début
+print (toto5)
+print (len(toto5))
+toto6 = bytearray.bitarray(toto5)
 
 serialPort = Serial(port, 9600, databits=8, stopbits=1)
 print ("Port Série ", port, " ouvert pour le test :")
