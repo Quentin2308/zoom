@@ -148,7 +148,7 @@ def discoverCameras():
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
 	s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 	s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-	s.settimeout(1)
+	s.settimeout(3)
 	#port = Serial("/dev/ttyS1",9600)
 	try:
 		s.bind(("", 52381))
