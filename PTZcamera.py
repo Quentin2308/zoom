@@ -161,6 +161,7 @@ def discoverCameras():
 		try:
 			while True:
 				raw, addr = s.recvfrom(1024)
+				print("sent2")
 				if raw == discoverCmd:
 					continue
 				data = raw.split(b'\xFF')
