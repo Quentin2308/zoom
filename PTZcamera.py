@@ -2,6 +2,8 @@ import socket
 import logging as log
 from commands import *
 from periphery import Serial
+import time
+
 
 log.basicConfig(format='%(asctime)s %(message)s')
 log.addLevelName(5,"VERBOSE")
@@ -10,10 +12,12 @@ log.getLogger().setLevel("VERBOSE")
 socket.setdefaulttimeout(1)
 
 class Camera:
+	
 	sequenceNumber = 1 # starts at 1?
 	panSpeed = 0x08 # reasonable default speed
 	tiltSpeed = 0x08
 	zoomSpeed = 0x02
+	
 	def __init__(self, name, ip, mac, netmask="255.255.255.0", gateway="0.0.0.0"):
 		self.name = name
 		self.ip = ip
@@ -21,6 +25,7 @@ class Camera:
 		self.netmask = netmask
 		self.gateway = gateway
 		self.resetSequenceNumber()
+		
 	def __str__(self):
 		return f"{self.name}({self.mac}) {self.ip}"
 
@@ -54,44 +59,15 @@ class Camera:
 	def resetSequenceNumber(self):
 		self.sequenceNumber = 1
 		sendRawCommand(self.ip, bytearray.fromhex('02 00 00 01 00 00 00 01 01'), skipCompletion=True)
-
-	def getPos(self):
-		data = self.inquire(Inquiry.PanTiltPos)
-		pan = (data[10] << 12) | (data[11] << 8) | (data[12] << 4) | data[13]
-		tilt = (data[14] << 12) | (data[15] << 8) | (data[16] << 4) | data[17]
-		log.debug("Got positions, Pan: %0.4x Tilt: %0.4x", pan, tilt)
-		return (pan, tilt)
+	
 	def getZoomPos(self):
 		data = self.inquire(Inquiry.ZoomPos)
 		return (data[10] << 12) | (data[11] << 8) | (data[12] << 4) | data[13]
 
-	def setPos(self, pan, tilt):
-		self.sendCommand(Commands.PanTiltAbs(pan, tilt, self.panSpeed, self.tiltSpeed))
-
-	def setSpeed(self, panSpeed=-1, tiltSpeed=-1, zoomSpeed=-1):
-		if panSpeed>0:
-			self.panSpeed = panSpeed
-		if tiltSpeed>0:
-			self.tiltSpeed = tiltSpeed
+	def setSpeed(self, zoomSpeed=-1):
 		if zoomSpeed>0:
 			self.zoomSpeed = zoomSpeed
 
-	def moveLeft(self):
-		self.sendCommand(Commands.PanTiltLeft(self.panSpeed, self.tiltSpeed))
-	def moveRight(self):
-		self.sendCommand(Commands.PanTiltRight(self.panSpeed, self.tiltSpeed))
-	def moveUp(self):
-		self.sendCommand(Commands.PanTiltUp(self.panSpeed, self.tiltSpeed))
-	def moveDown(self):
-		self.sendCommand(Commands.PanTiltDown(self.panSpeed, self.tiltSpeed))
-	def moveUpLeft(self):
-		self.sendCommand(Commands.PanTiltUpLeft(self.panSpeed, self.tiltSpeed))
-	def moveUpRight(self):
-		self.sendCommand(Commands.PanTiltUpRight(self.panSpeed, self.tiltSpeed))
-	def moveDownLeft(self):
-		self.sendCommand(Commands.PanTiltDownLeft(self.panSpeed, self.tiltSpeed))
-	def moveDownRight(self):
-		self.sendCommand(Commands.PanTiltDownRight(self.panSpeed, self.tiltSpeed))
 	def home(self):
 		self.sendCommand(Commands.PanTiltHome)
 	def reset(self):
@@ -200,11 +176,10 @@ def discoverCameras():
 		s.close()
 
 c = discoverCameras()
-d = Camera("CAM1", "10.0.1.90", "")
-import time
+#d = Camera("CAM1", "10.0.1.90", "")
 
-d.sendCommand(b"\x01\x00\x00\x06\x00\x00\x00\x01\x81\x01\x04\x00\x03\xff") 
-time.sleep(1)
+#d.sendCommand(b"\x01\x00\x00\x06\x00\x00\x00\x01\x81\x01\x04\x00\x03\xff") 
+#time.sleep(1)
 
 #d.sendCommand(b"\x81\x01\x7e\x01\x18\x02\xff")
 #c[0].setIP(name="LaurieC1")
