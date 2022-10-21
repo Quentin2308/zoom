@@ -149,7 +149,7 @@ def discoverCameras():
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
 	s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 	s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-	s.settimeout(10)
+	s.settimeout(3)
 	#port = Serial("/dev/ttyS1",9600)
 	try:
 		s.bind(("", 52381))
@@ -188,7 +188,7 @@ print("camera3 : ", d)
 f = Camera("CAM3", "192.168.108.42", "")
 print("camera3 : ", f)
 
-e.getZoomPos()
+#e.getZoomPos()
 d.getZoomPos()
 f.getZoomPos()
 
