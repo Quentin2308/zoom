@@ -62,6 +62,7 @@ class Camera:
 	
 	def getZoomPos(self):
 		data = self.inquire(Inquiry.ZoomPos)
+		print((data[10] << 12) | (data[11] << 8) | (data[12] << 4) | data[13])
 		return (data[10] << 12) | (data[11] << 8) | (data[12] << 4) | data[13]
 
 	def setSpeed(self, zoomSpeed=-1):
@@ -176,7 +177,15 @@ def discoverCameras():
 		s.close()
 
 c = discoverCameras()
-#d = Camera("CAM1", "10.0.1.90", "")
+d = Camera("CAM1", "255.255.255.255", "")
+print("camera1: ", d)
+e = Camera("CAM1", "127.0.0.1", "")
+print("camera 2 :", e)
+f = Camera("CAM1", "10.0.1.90", "")
+print("ccamera3 : ", f)
+d.getZoomPos()
+e.getZoomPos()
+f.getZoomPos()
 
 #d.sendCommand(b"\x01\x00\x00\x06\x00\x00\x00\x01\x81\x01\x04\x00\x03\xff") 
 #time.sleep(1)
