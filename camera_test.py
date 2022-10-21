@@ -27,7 +27,7 @@ serialPort.write(inquiry)
 print("fin d'écriture")
 #print("nombre de byte écrit sur le port : ", bytes_sent)
 
-answer = serialPort.read(10)
+answer = serialPort.read(10, timeout = 2)
 print("réponse de la camera :", answer)
   
 # for general commands (payload type 0100), command should be bytes
