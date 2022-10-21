@@ -5,19 +5,19 @@ from time import sleep
 #byte = bytes (test_string, 'utf-8')
 port = "/dev/ttyS1"
 
-serialPort = Serial(port, 9600)
+serialPort = Serial(port, 9600, databits=8, stopbits=1)
 print ("Port Série ", port, " ouvert pour le test :")
-sequenceNumber = 1
+#sequenceNumber = 1
 #bytes_sent = serialPort.write(byte)
 # for general commands (payload type 0100), command should be bytes
-command = bytearray.fromhex("8101040003ff")
-print(command)
-length = len(command).to_bytes(2, 'big')
-command = b"\x01\x00" + length + sequenceNumber.to_bytes(4, 'big') + command
-print(command)
-serialPort.write(command)
+#command = bytearray.fromhex("8101040003ff")
+#print(command)
+#length = len(command).to_bytes(2, 'big')
+#command = b"\x01\x00" + length + sequenceNumber.to_bytes(4, 'big') + command
+#print(command)
+#serialPort.write(command)
 #data = sendRawCommand(self.ip, command, skipCompletion=skipCompletion) # TODO: deal with udp packets getting lost and sequence number desyncing (see manual)
-sequenceNumber += 1
+#sequenceNumber += 1
 
 
 
