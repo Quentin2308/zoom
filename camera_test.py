@@ -17,7 +17,7 @@ print (len(bit_inq))
 byte_inq = ba.bitarray(bit_inq)
 print (byte_inq)
 
-serialPort = Serial(port, 9600, databits=8, stopbits=1)
+serialPort = Serial(port, 9600, databits=8, parity=None, stopbits=1, xonxoff=False, rtscts=False)
 print ("Port Série ", port, " ouvert pour le test :")
 
 serialPort.write(IF_clear)
