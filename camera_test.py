@@ -6,7 +6,7 @@ from time import sleep
 port = "/dev/ttyS1"
 
 IF_clear = bytearray.fromhex("88 01 00 01 FF")
-inquiry = bytearray.fromhex("88 30 01 FF")
+inquiry = bytearray.fromhex("88 09 04 22 FF")
 reset_sqc_number = bytearray.fromhex('02 00 00 01 00 00 00 01 01')
 
 print (inquiry)
@@ -18,7 +18,7 @@ print (len(bit_inq))
 byte_inq = ba.bitarray(bit_inq)
 print (byte_inq)
 
-serialPort = Serial(port, 9600, databits=8, parity='none', stopbits=1, xonxoff=False, rtscts=False)
+serialPort = Serial(port, 38400, databits=8, parity='none', stopbits=1, xonxoff=False, rtscts=False)
 print ("Port Série ", port, " ouvert pour le test :")
 serialPort.write(reset_sqc_number)
 sleep(0.1)
