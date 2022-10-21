@@ -189,7 +189,7 @@ f = Camera("CAM3", "192.168.108.42", "")
 print("camera3 : ", f)
 
 #e.getZoomPos()
-d.getZoomPos()
+#d.getZoomPos()
 f.getZoomPos()
 
 #d.sendCommand(b"\x01\x00\x00\x06\x00\x00\x00\x01\x81\x01\x04\x00\x03\xff") 
