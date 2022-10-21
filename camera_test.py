@@ -16,7 +16,7 @@ bytes_sent = serialPort.write(power_inquiry)
 # for general commands (payload type 0100), command should be bytes
 #command = bytearray.fromhex("8101040003ff")
 
-length = len(command).to_bytes(2, 'big')
+length = len(power_inquiry).to_bytes(2, 'big')
 print ("longueur = ", length)
 
 command = b"\x01\x00" + length + sequenceNumber.to_bytes(4, 'big') + power_inquiry
