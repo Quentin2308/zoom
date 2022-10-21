@@ -21,7 +21,7 @@ serialPort = Serial(port, 9600, databits=8, stopbits=1)
 print ("Port Série ", port, " ouvert pour le test :")
 
 serialPort.write(IF_clear)
-time.sleep(0.1)
+sleep(0.1)
 serialPort.write(inquiry)
 
 print("fin d'écriture")
