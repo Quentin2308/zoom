@@ -24,7 +24,7 @@ class Camera:
 		self.mac = mac # mac using dashes to seperate
 		self.netmask = netmask
 		self.gateway = gateway
-		self.resetSequenceNumber()
+		#self.resetSequenceNumber()
 		
 	def __str__(self):
 		return f"{self.name}({self.mac}) {self.ip}"
@@ -56,9 +56,9 @@ class Camera:
 	def inquire(self, command):
 		return self.sendCommand(command, skipCompletion=True) # no acknoledge message for a inquiry
 
-	def resetSequenceNumber(self):
-		self.sequenceNumber = 1
-		sendRawCommand(self.ip, bytearray.fromhex('02 00 00 01 00 00 00 01 01'), skipCompletion=True)
+	#def resetSequenceNumber(self):
+		#self.sequenceNumber = 1
+		#sendRawCommand(self.ip, bytearray.fromhex('02 00 00 01 00 00 00 01 01'), skipCompletion=True)
 
 	def getZoomPos(self):
 		data = self.inquire(Inquiry.ZoomPos)
